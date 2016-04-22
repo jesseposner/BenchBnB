@@ -1,5 +1,9 @@
-var ApiUtil = require("./util/api_util"),
-    BenchStore = require("./stores/bench");
+var ReactDOM = require('react-dom'),
+    React = require('react'),
+    Index = require('./components/index');
 
-window.ApiUtil = ApiUtil;
-window.BenchStore = BenchStore;
+document.addEventListener('DOMContentLoaded', function () {
+  ReactDOM.render(
+    <Index />, document.getElementById('content')
+  );
+});

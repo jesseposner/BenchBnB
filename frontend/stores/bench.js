@@ -13,6 +13,7 @@ BenchStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
     case BenchConstants.BENCHES_RECEIVED:
       _benches = payload.benches;
+      BenchStore.__emitChange();
       break;
   }
 };

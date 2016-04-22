@@ -1,7 +1,7 @@
-var ServerActions = require("../actions/server_actions");
+var ServerActions = require('../actions/server_actions');
 
 var ApiUtil = {
-  fetchBenches: function(){
+  fetchBenches: function (){
     $.ajax ({
       url: "/api/benches",
       success: function (benches) {
