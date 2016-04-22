@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+20.times do
+  Bench.create(
+    description: Faker::Hipster.paragraph,
+    lat: Faker::Address.latitude,
+    lng: Faker::Address.longitude
+  )
+end

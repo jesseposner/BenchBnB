@@ -46,4 +46,5 @@ group :development do
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'byebug'
+  gem 'faker'
 end
