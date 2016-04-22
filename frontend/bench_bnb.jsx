@@ -1,9 +1,9 @@
 var ReactDOM = require('react-dom'),
     React = require('react'),
-    Index = require('./components/index');
+    MapComp = require('./components/map');
 
 document.addEventListener('DOMContentLoaded', function () {
   ReactDOM.render(
-    <Index />, document.getElementById('content')
+    <MapComp />, document.getElementById('content')
   );
 });
