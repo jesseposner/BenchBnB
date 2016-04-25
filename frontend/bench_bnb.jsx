@@ -1,9 +1,9 @@
 var ReactDOM = require('react-dom'),
     React = require('react'),
-    MapComp = require('./components/map');
+    Search = require('./components/search');
 
 document.addEventListener('DOMContentLoaded', function () {
   ReactDOM.render(
-    <MapComp />, document.getElementById('content')
+    <Search />, document.getElementById('content')
   );
 });
