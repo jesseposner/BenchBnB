@@ -11,12 +11,23 @@ var MapComp = React.createClass({
     var mapDOMNode = this.refs.map;
     var mapOptions = {
       center: {lat: 37.7758, lng: -122.435},
-      zoom: 1
+      zoom: 10
     };
     this.map = new google.maps.Map(mapDOMNode, mapOptions);
     this.map.addListener('idle', function() {
-      ClientActions.fetchBenches();
-    });
+      var bounds = {
+        northEast: {
+          lat: this.map.getBounds().getNorthEast().lat(),
+          lng: this.map.getBounds().getNorthEast().lng()
+        },
+        southWest: {
+          lat: this.map.getBounds().getSouthWest().lat(),
+          lng: this.map.getBounds().getSouthWest().lng()
+        }
+      };
+
+      ClientActions.fetchBenches(bounds);
+    }.bind(this));
   },
 
   componentWillUnmount: function () {
@@ -38,11 +49,9 @@ var MapComp = React.createClass({
 
   render: function() {
     return (
-      <div className="map" ref="map">
-      </div>
+      <div className="map" ref="map" />
     );
   }
-
 });
 
 module.exports = MapComp;
