@@ -53,7 +53,9 @@
 	var IndexRoute = ReactRouter.IndexRoute;
 	var hashHistory = ReactRouter.hashHistory;
 
-	var Search = __webpack_require__(254);
+	var Search = __webpack_require__(193);
+
+	var BenchForm = __webpack_require__(255);
 
 	var App = React.createClass({
 	  displayName: 'App',
@@ -82,7 +84,8 @@
 	  React.createElement(
 	    Route,
 	    { path: '/', component: App },
-	    React.createElement(IndexRoute, { component: Search })
+	    React.createElement(IndexRoute, { component: Search }),
+	    React.createElement(Route, { path: '/benches/new', component: BenchForm })
 	  )
 	);
 
@@ -26929,6 +26932,15 @@
 	        ServerActions.receiveAll(benches);
 	      }
 	    });
+	  },
+
+	  createBench: function (bench) {
+	    $.ajax({
+	      url: "/api/benches",
+	      method: "POST",
+	      data: { bench: bench },
+	      success: function () {}
+	    });
 	  }
 	};
 
@@ -26953,7 +26965,31 @@
 	module.exports = ServerActions;
 
 /***/ },
-/* 193 */,
+/* 193 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(160),
+	    MapComp = __webpack_require__(166),
+	    Index = __webpack_require__(194);
+
+	var Search = React.createClass({
+	  displayName: 'Search',
+
+
+	  render: function () {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(MapComp, null),
+	      React.createElement(Index, null)
+	    );
+	  }
+
+	});
+
+	module.exports = Search;
+
+/***/ },
 /* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -32404,29 +32440,54 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 254 */
+/* 254 */,
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(160),
-	    MapComp = __webpack_require__(166),
-	    Index = __webpack_require__(194);
+	var React = __webpack_require__(160);
 
-	var Search = React.createClass({
-	  displayName: 'Search',
+	var BenchForm = React.createClass({
+	  displayName: "BenchForm",
 
 
 	  render: function () {
 	    return React.createElement(
-	      'div',
+	      "div",
 	      null,
-	      React.createElement(MapComp, null),
-	      React.createElement(Index, null)
+	      React.createElement(
+	        "form",
+	        null,
+	        React.createElement(
+	          "label",
+	          null,
+	          "Description",
+	          React.createElement("input", { type: "text", name: "description", value: "" })
+	        ),
+	        React.createElement(
+	          "label",
+	          null,
+	          "Number of seats",
+	          React.createElement("input", { type: "text", name: "seats", value: "" })
+	        ),
+	        React.createElement(
+	          "label",
+	          null,
+	          "Latitude",
+	          React.createElement("input", { type: "text", name: "lat", value: "" })
+	        ),
+	        React.createElement(
+	          "label",
+	          null,
+	          "Longitude",
+	          React.createElement("input", { type: "text", name: "lng", value: "" })
+	        )
+	      )
 	    );
 	  }
 
 	});
 
-	module.exports = Search;
+	module.exports = BenchForm;
 
 /***/ }
 /******/ ]);

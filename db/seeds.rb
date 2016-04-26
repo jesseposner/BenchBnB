@@ -10,6 +10,7 @@
   Bench.create(
     description: Faker::Hipster.paragraph,
     lat: Faker::Address.latitude,
-    lng: Faker::Address.longitude
+    lng: Faker::Address.longitude,
+    seating: rand(10)
   )
 end
